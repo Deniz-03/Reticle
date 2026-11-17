@@ -9,29 +9,21 @@ public static class ClassicGeometry
         ArgumentNullException.ThrowIfNull(layer);
         anim ??= AnimatedProps.Identity;
 
-        double scale = layer.Scale * anim.ScaleMul;
-        double rotation = layer.Rotation + anim.RotationAdd;
-        double opacity = layer.Opacity * anim.OpacityMul;
+        var common = LayerGeometry.Common.From(layer, sizeFactor, anim);
 
         int t = LayerGeometry.Snap(layer.Thickness, sizeFactor, 1);
         int c0 = -((t - 1) / 2);
         var pivot = new Vec2(c0 + t / 2.0, c0 + t / 2.0);
 
         if (!layer.Visible)
-            return new LayerRender(layer.Id, [], opacity, layer.Blur, rotation, scale, layer.Offset, pivot);
+            return common.Render(layer, [], pivot);
 
         int len = LayerGeometry.Snap(layer.Length, sizeFactor, 1);
         int gap = LayerGeometry.Snap(layer.Gap + anim.GapAdd, sizeFactor, int.MinValue);
 
-        var fill = anim.Color ?? layer.Color;
-        Rgba? outlineColor = null;
-        double outlineWidth = 0;
-        if (layer.Outline.Enabled)
-        {
-            byte a = (byte)Math.Round(layer.Outline.Color.A * layer.Outline.Opacity, MidpointRounding.AwayFromZero);
-            outlineColor = layer.Outline.Color with { A = a };
-            outlineWidth = LayerGeometry.Snap(layer.Outline.Width, sizeFactor, 1);
-        }
+        var fill = common.Fill;
+        var outlineColor = common.OutlineColor;
+        double outlineWidth = common.OutlineWidth;
 
         var items = new List<Prim>(5);
         void Rect(double x, double y, double w, double h)
@@ -52,6 +44,6 @@ public static class ClassicGeometry
                 Rect(d0, d0, s, s);
         }
 
-        return new LayerRender(layer.Id, items, opacity, layer.Blur, rotation, scale, layer.Offset, pivot);
+        return common.Render(layer, items, pivot);
     }
 }

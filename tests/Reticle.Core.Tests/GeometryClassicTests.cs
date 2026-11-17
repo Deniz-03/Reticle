@@ -113,8 +113,33 @@ public class GeometryClassicTests
     }
 
     [Fact]
-    public void NonClassic_NotImplementedYet()
+    public void Offset_ScaledAndRoundedAwayFromZero()
     {
-        Assert.Throws<NotImplementedException>(() => LayerGeometry.Build(new RadialLayer(), 1));
+        var r = LayerGeometry.Build(Layer(1, 4, 2) with { Offset = new Vec2(3, -2) }, 2);
+        Assert.Equal(new Vec2(6, -4), r.Offset);
+        r = LayerGeometry.Build(Layer(1, 4, 2) with { Offset = new Vec2(1, -1) }, 1.5);
+        Assert.Equal(new Vec2(2, -2), r.Offset);
+    }
+
+    [Fact]
+    public void Blur_ScaledBySizeFactor()
+        => Assert.Equal(3, LayerGeometry.Build(Layer(1, 4, 2) with { Blur = 1.5 }, 2).Blur);
+
+    [Theory]
+    [InlineData(1, 2, 2)]
+    [InlineData(0.2, 1, 1)]
+    public void OutlineWidth_ScaledWithMinOne(double width, double factor, double expected)
+    {
+        var l = Layer(1, 4, 2) with { Outline = new Outline(true, width, new Rgba(0, 0, 0, 255), 1) };
+        Assert.Equal(expected, LayerGeometry.Build(l, factor).Items[0].OutlineWidth);
+    }
+
+    [Theory]
+    [InlineData(2.0, 255)]
+    [InlineData(-1.0, 0)]
+    public void OutlineAlpha_ClampedToByteRange(double opacity, int expectedAlpha)
+    {
+        var l = Layer(1, 4, 2) with { Outline = new Outline(true, 1, new Rgba(0, 0, 0, 200), opacity) };
+        Assert.Equal((byte)expectedAlpha, LayerGeometry.Build(l, 1).Items[0].OutlineColor!.Value.A);
     }
 }
