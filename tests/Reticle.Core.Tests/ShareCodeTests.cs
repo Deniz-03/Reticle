@@ -114,4 +114,33 @@ public class ShareCodeTests
         var b = ShareCode.Encode(Sample() with { Id = "other", UpdatedAt = DateTimeOffset.UtcNow });
         Assert.Equal(a, b);
     }
+
+    private static string CodeFromJson(string json)
+    {
+        var bytes = System.Text.Encoding.UTF8.GetBytes(json);
+        var buf = new byte[System.IO.Compression.BrotliEncoder.GetMaxCompressedLength(bytes.Length)];
+        Assert.True(System.IO.Compression.BrotliEncoder.TryCompress(bytes, buf, out var n));
+        return ShareCode.Prefix + Convert.ToBase64String(buf, 0, n).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+    }
+
+    [Theory]
+    [InlineData("""{"schema":1,"name":"x"}""")]
+    [InlineData("""{"schema":1,"name":"x","layers":null}""")]
+    [InlineData("""{"schema":1,"name":"x","layers":[null]}""")]
+    [InlineData("""{"schema":1,"name":"x","layers":[{"type":"classic"},null]}""")]
+    public void Decode_NullLayersOrElement_ReturnsError(string json)
+    {
+        var result = ShareCode.Decode(CodeFromJson(json));
+        Assert.Null(result.Doc);
+        Assert.False(string.IsNullOrEmpty(result.Error));
+    }
+
+    [Fact]
+    public void RoundTrip_ValuesDifferingFromInitializers()
+    {
+        var doc = Sample(new ClassicLayer { Id = "z", Gap = 0, Visible = false, Top = false, Length = 0, Scale = 0, Opacity = 0 });
+        var result = ShareCode.Decode(ShareCode.Encode(doc));
+        Assert.Null(result.Error);
+        Assert.Equal(Json.Serialize(doc.Layers), Json.Serialize(result.Doc!.Layers));
+    }
 }

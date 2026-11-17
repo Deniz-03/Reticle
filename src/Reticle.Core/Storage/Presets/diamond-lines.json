@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-diamond-lines","name":"Diagonal Cross","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"radial","id":"a","name":"X","color":"#2DE2C0","arms":4,"startAngle":45,"length":6,"thickness":2,"gap":4}]}

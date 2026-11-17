@@ -33,7 +33,9 @@ internal sealed class RgbaJsonConverter : JsonConverter<Rgba>
 {
     public override Rgba Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        try { return Rgba.Parse(reader.GetString() ?? throw new JsonException("Color must be a string.")); }
+        if (reader.TokenType != JsonTokenType.String)
+            throw new JsonException("Color must be a string.");
+        try { return Rgba.Parse(reader.GetString()!); }
         catch (FormatException e) { throw new JsonException(e.Message, e); }
     }
 

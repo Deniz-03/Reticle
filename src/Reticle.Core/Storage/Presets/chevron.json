@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-chevron","name":"Chevron","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"shape","id":"a","name":"Chevron","kind":"chevron","color":"#FF3B3B","width":14,"height":9,"strokeWidth":2,"offset":{"x":0,"y":6},"outline":{"enabled":true,"width":1,"color":"#000000","opacity":0.5}}]}

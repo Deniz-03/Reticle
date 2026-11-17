@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-thick-outlined","name":"Thick Outlined","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"classic","id":"a","name":"Cross","color":"#00E5FF","length":8,"thickness":4,"gap":4,"outline":{"enabled":true,"width":1,"color":"#000000","opacity":0.5}}]}

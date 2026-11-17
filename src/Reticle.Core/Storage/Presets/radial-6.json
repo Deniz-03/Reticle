@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-radial-6","name":"Six Arm","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"radial","id":"a","name":"Arms","color":"#7CFF4F","arms":6,"startAngle":0,"length":7,"thickness":2,"gap":4}]}

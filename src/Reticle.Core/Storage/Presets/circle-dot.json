@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-circle-dot","name":"Circle Dot","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"shape","id":"a","name":"Circle","kind":"circle","color":"#FF7A00","width":3,"height":3},{"type":"shape","id":"b","name":"Ring","kind":"ring","color":"#FF7A00","width":16,"height":16,"strokeWidth":1.5}]}

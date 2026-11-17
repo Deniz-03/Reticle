@@ -72,7 +72,7 @@ public static class ShareCode
 
             var json = new UTF8Encoding(false, true).GetString(output.GetBuffer(), 0, (int)output.Length);
             var doc = Json.Deserialize<CrosshairDoc>(json);
-            if (doc.Layers is null)
+            if (doc.Layers is null || doc.Layers.Any(l => l is null))
                 return new ImportResult(null, damaged);
 
             var now = DateTimeOffset.UtcNow;

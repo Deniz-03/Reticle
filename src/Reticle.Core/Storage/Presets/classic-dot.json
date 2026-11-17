@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-classic-dot","name":"Classic Dot","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"classic","id":"a","name":"Cross","color":"#39FF88","length":6,"thickness":2,"gap":3,"dot":{"enabled":true,"size":2,"round":false}}]}

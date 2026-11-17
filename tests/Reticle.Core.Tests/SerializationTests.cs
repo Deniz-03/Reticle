@@ -99,4 +99,19 @@ public class SerializationTests
         Assert.Equal(0x77, h.Single(x => x.Action == HotkeyAction.ToggleOverlay).Binding!.Code);
         Assert.Equal(Modifiers.Shift, h.Single(x => x.Action == HotkeyAction.PreviousCrosshair).Binding!.Mods);
     }
+
+    [Fact]
+    public void Layer_TypeDiscriminatorNotFirst_Deserializes()
+    {
+        var layer = Json.Deserialize<Layer>("""{"length":9,"type":"classic"}""");
+        Assert.Equal(9, Assert.IsType<ClassicLayer>(layer).Length);
+    }
+
+    [Theory]
+    [InlineData("""{"color":5}""")]
+    [InlineData("""{"color":null}""")]
+    public void Rgba_NonStringToken_ThrowsJsonException(string json)
+    {
+        Assert.Throws<System.Text.Json.JsonException>(() => Json.Deserialize<ClassicLayer>(json));
+    }
 }

@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-plus-ring","name":"Plus In Ring","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"classic","id":"a","name":"Plus","color":"#FFFFFF","length":4,"thickness":1,"gap":1},{"type":"shape","id":"b","name":"Ring","kind":"ring","color":"#FF9F1C","width":26,"height":26,"strokeWidth":1}]}

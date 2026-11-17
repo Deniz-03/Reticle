@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-triangle","name":"Triangle","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"shape","id":"a","name":"Triangle","kind":"triangle","color":"#FFE14F","width":12,"height":12,"strokeWidth":1.5}]}

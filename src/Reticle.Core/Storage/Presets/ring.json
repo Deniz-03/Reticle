@@ -1,0 +1,1 @@
+{"schema":1,"id":"preset-ring","name":"Ring","createdAt":"2026-01-01T00:00:00+00:00","updatedAt":"2026-01-01T00:00:00+00:00","referenceHeight":1080,"layers":[{"type":"shape","id":"a","name":"Ring","kind":"ring","color":"#B26BFF","width":20,"height":20,"strokeWidth":2,"outline":{"enabled":true,"width":1,"color":"#000000","opacity":0.5}}]}
