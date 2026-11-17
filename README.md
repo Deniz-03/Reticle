@@ -1,34 +1,67 @@
 # Reticle
 
-Reticle ist ein lokales Windows-Overlay für eigene Fadenkreuze. Es kommuniziert nicht mit Spielen und sammelt keine Telemetrie.
+[![CI](https://github.com/Deniz-03/Reticle/actions/workflows/ci.yml/badge.svg)](https://github.com/Deniz-03/Reticle/actions/workflows/ci.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-## Installation und Start
+Reticle ist ein kostenloses, quelloffenes Crosshair-Overlay für Windows 10/11. Es zeichnet ein frei gestaltbares Fadenkreuz pixelgenau in die Bildschirmmitte, lässt alle Klicks durch und greift nicht in Spiele ein.
 
-1. Lade die portable `Reticle.exe` aus dem `dist`-Ordner bzw. veröffentliche sie mit `build/publish.ps1`.
-2. Starte die Anwendung. Das aktive Fadenkreuz erscheint mittig auf dem ausgewählten Monitor und lässt Mausklicks durch.
-3. Öffne **Bibliothek**, um ein Preset zu aktivieren, zu duplizieren oder einen Share-Code zu importieren. Im **Designer** werden Änderungen sofort ins Overlay übernommen.
+## Funktionen
 
-Die Einstellungen und Bibliothek liegen im lokalen Anwendungsdatenordner und bleiben bei Updates erhalten.
+- **Click-through-Overlay**: transparent, immer im Vordergrund, nicht in Taskleiste oder Alt-Tab, pixelgenau zentriert (auch bei ungerader Auflösung und DPI-Skalierung), Monitorauswahl, Versatz und globale Größe.
+- **Designer mit Ebenen**: klassisches Kreuz (Linien, Abstand, Punkt, T-Form), radiale Kreuze mit 2–8 Armen, Formen (Kreis, Ring, Rechteck, Dreieck, Chevron, Bogen, Linie) und Bilder (PNG, JPG, WebP, animiertes GIF). Pro Ebene: Farbe, Deckkraft, Rotation, Skalierung, Versatz, Blur, Umrandung. Live-Vorschau mit Undo/Redo.
+- **Animationen**: Ebenen reagieren auf Tasten oder Maustasten (z. B. Spreizung beim Schießen), mehrstufig mit Easing.
+- **Bibliothek**: beliebig viele Crosshairs, 17 mitgelieferte Presets, Vorschaubilder.
+- **Hotkeys**: Overlay ein/aus, nächstes/vorheriges Crosshair, Ausblenden solange gedrückt, Zentrieren, Größe ±, eigene Taste pro Crosshair (z. B. pro Waffe), automatisches Ausblenden bei gedrückter rechter Maustaste.
+- **Teilen & Import**: eigene Share-Codes (`RTCL1.…`), Datei-Export/-Import (`*.reticle.json`), PNG-Export und **Import von Valorant-Crosshair-Codes** (`0;P;c;5;…`).
+- **System**: Tray-Icon, Autostart, Einzelinstanz, Hinweis bei Spielen mit Administratorrechten, Deutsch und Englisch.
+- **Datenschutz**: keine Netzwerkverbindungen, keine Telemetrie. Daten liegen lokal unter `%APPDATA%\Reticle`.
 
-## Valorant
+## Installation
 
-Nutze für ein sichtbares Overlay den Anzeigemodus **„Vollbild im Fenster“**. Exklusives Vollbild kann Windows-Overlays verdecken.
+1. Lade die aktuelle `Reticle.exe` unter [Releases](https://github.com/Deniz-03/Reticle/releases) herunter (portable, keine Installation nötig).
+2. Starte sie. Das aktive Fadenkreuz erscheint mittig auf dem gewählten Monitor.
+3. Unter **Bibliothek** aktivierst du Presets oder importierst Codes, im **Designer** passt du sie an – Änderungen erscheinen sofort im Overlay.
 
-Du kannst das Valorant-Fadenkreuz ausblenden (Fadenkreuz → innere/äußere Linien und Mittelpunkt deaktivieren) oder es bewusst mit Reticle kombinieren. Einen Valorant-Code fügst du über **Bibliothek → Importieren…** ein.
+Standard-Hotkeys: `F8` Overlay ein/aus, `F9` nächstes Crosshair, `Shift+F9` vorheriges, `Strg+F8` zentrieren.
 
-Falls Riot Client oder das Spiel als Administrator läuft, starte auch Reticle als Administrator; Windows lässt globale Hooks sonst nicht zuverlässig in den Prozess mit höherer Integrität gelangen.
+## Nutzung mit Valorant
 
-Die Nutzung geschieht auf eigenes Risiko. Reticle zeichnet lediglich ein Windows-Overlay und greift nicht auf Spielprozesse zu; es gibt keine offizielle Freigabe durch Riot Games.
+- Anzeigemodus **„Vollbild im Fenster“** verwenden. Exklusives Vollbild verdeckt Windows-Overlays.
+- Das Valorant-eigene Fadenkreuz ausblenden (innere/äußere Linien und Mittelpunkt aus) oder bewusst kombinieren.
+- Valorant-Codes über **Bibliothek → Importieren…** einfügen.
+- Läuft der Riot Client als Administrator, Reticle ebenfalls als Administrator starten – sonst kommen Hotkeys nicht an.
+
+> **Hinweis:** Reticle zeichnet nur ein Windows-Overlay. Es liest oder verändert keinen Spielspeicher, injiziert nichts und sendet keine Eingaben. Eine offizielle Freigabe durch Spielehersteller gibt es trotzdem nicht – die Nutzung erfolgt auf eigenes Risiko.
 
 ## Problemlösung
 
-- **Overlay nicht sichtbar:** Prüfe den Fenstermodus und wechsle von exklusivem Vollbild zu „Vollbild im Fenster“.
-- **Hotkeys funktionieren nicht:** Prüfe die Bindung und starte Reticle als Administrator, wenn das Zielspiel erhöht läuft.
-- **Fadenkreuz wirkt unscharf:** Verwende eine ganzzahlige Designer-Vergrößerung und überprüfe den globalen Größenfaktor sowie die Windows-Skalierung.
+| Problem | Lösung |
+|---|---|
+| Overlay nicht sichtbar | Vom exklusiven Vollbild auf „Vollbild im Fenster“ wechseln. |
+| Hotkeys reagieren nicht im Spiel | Reticle als Administrator starten (Einstellungen → „Als Administrator neu starten“). |
+| Fadenkreuz unscharf | Globale Größe auf ganzzahlige Werte setzen, Windows-Skalierung prüfen. |
 
 ## Entwicklung
 
+Voraussetzung: Windows 10/11 und das [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
+
 ```powershell
-dotnet test Reticle.sln -c Release
-.\build\publish.ps1
+dotnet build Reticle.sln
+dotnet test Reticle.sln
+dotnet run --project src/Reticle.App
+.\build\publish.ps1        # portable Reticle.exe in dist/
 ```
+
+Projektstruktur:
+
+| Pfad | Inhalt |
+|---|---|
+| `src/Reticle.Core` | Plattformunabhängige Logik: Datenmodell, Geometrie, Animationen, Hotkey-Matching, Codecs, Speicherung, Presets |
+| `src/Reticle.App` | WPF-App: Overlay-Fenster, globale Input-Hooks, Editor-UI, Tray |
+| `tests/` | xUnit-Tests für Core und App |
+
+Ein Release entsteht automatisch, wenn ein Tag `v*` gepusht wird (z. B. `git tag v1.0.0 && git push origin v1.0.0`).
+
+## Lizenz
+
+[GNU General Public License v3.0](LICENSE)
