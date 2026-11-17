@@ -8,7 +8,7 @@ namespace Reticle.App.Overlay;
 
 /// <summary>
 /// Draws the active crosshair of <see cref="AppState"/> in device pixels around the window's center pixel.
-/// One child <see cref="DrawingVisual"/> per visible layer (so a layer can carry its own <see cref="BlurEffect"/>)
+/// One child <see cref="ContainerVisual"/> per visible layer (so a layer can carry its own <see cref="BlurEffect"/>)
 /// under a root visual whose transform is translate(center) then scale(1/DpiScale), making 1 unit = 1 device pixel
 /// with the origin at the top-left corner of the center pixel.
 /// Redraws on <see cref="AppState.Changed"/>; hooks <see cref="CompositionTarget.Rendering"/> only while an
@@ -18,7 +18,7 @@ public sealed class OverlayRenderer : FrameworkElement
 {
     private readonly AppState _state;
     private readonly ContainerVisual _root = new();
-    private readonly List<DrawingVisual> _layerVisuals = new();
+    private readonly List<ContainerVisual> _layerVisuals = new();
     private readonly LayerImageCache _images = new();
     private readonly Dictionary<Rgba, SolidColorBrush> _brushes = new();
     private MonitorInfo? _monitor;
@@ -118,13 +118,13 @@ public sealed class OverlayRenderer : FrameworkElement
         return animatedImage || _state.Animations.IsAnimating(nowMs);
     }
 
-    private DrawingVisual VisualAt(int index)
+    private ContainerVisual VisualAt(int index)
     {
         if (index < _layerVisuals.Count) return _layerVisuals[index];
-        var dv = new DrawingVisual();
-        _layerVisuals.Add(dv);
-        _root.Children.Add(dv);
-        return dv;
+        var cv = new ContainerVisual();
+        _layerVisuals.Add(cv);
+        _root.Children.Add(cv);
+        return cv;
     }
 
     private void TrimVisuals(int count)
@@ -136,41 +136,73 @@ public sealed class OverlayRenderer : FrameworkElement
         }
     }
 
+    /// <summary>
+    /// Draws one layer into its container. Draw order is all outlines, then all fills; consecutive operations
+    /// with the same edge mode share one child <see cref="DrawingVisual"/> (Ruling R6: Rect/Polygon prims are
+    /// aliased when rotation is a multiple of 90 degrees and scale is 1; ellipses, arcs and images are always
+    /// anti-aliased). Opacity and blur apply to the whole layer via the container.
+    /// </summary>
     /// <returns>True when the layer shows an animated GIF.</returns>
-    private bool DrawLayer(DrawingVisual dv, Layer layer, LayerRender r, double nowMs)
+    private bool DrawLayer(ContainerVisual layerVisual, Layer layer, LayerRender r, double nowMs)
     {
         if (r.Blur > 0)
         {
-            if (dv.Effect is BlurEffect blur) blur.Radius = r.Blur;
-            else dv.Effect = new BlurEffect { Radius = r.Blur, KernelType = KernelType.Gaussian };
+            if (layerVisual.Effect is BlurEffect blur) blur.Radius = r.Blur;
+            else layerVisual.Effect = new BlurEffect { Radius = r.Blur, KernelType = KernelType.Gaussian };
         }
-        else dv.Effect = null;
+        else layerVisual.Effect = null;
+        layerVisual.Opacity = Math.Clamp(r.Opacity, 0, 1);
 
-        bool sharp = r.Scale == 1 && Math.Abs(Math.IEEERemainder(r.Rotation, 90)) < 1e-9;
-        RenderOptions.SetEdgeMode(dv, sharp ? EdgeMode.Aliased : EdgeMode.Unspecified);
-
-        bool animated = false;
-        using var dc = dv.RenderOpen();
-        dc.PushOpacity(Math.Clamp(r.Opacity, 0, 1));
-        dc.PushTransform(new TranslateTransform(r.Offset.X, r.Offset.Y));
+        bool sharpLayer = r.Scale == 1 && Math.Abs(Math.IEEERemainder(r.Rotation, 90)) < 1e-9;
         var m = Matrix.Identity;
         m.ScaleAt(r.Scale, r.Scale, r.Pivot.X, r.Pivot.Y);
         m.RotateAt(r.Rotation, r.Pivot.X, r.Pivot.Y);
-        dc.PushTransform(new MatrixTransform(m));
+        m.Translate(r.Offset.X, r.Offset.Y);
+        var transform = new MatrixTransform(m);
+        transform.Freeze();
 
-        foreach (var item in r.Items) DrawOutline(dc, item);
-        foreach (var item in r.Items)
+        int runs = 0;
+        bool? runAliased = null;
+        DrawingContext? dc = null;
+        DrawingContext Ctx(Prim p)
         {
-            if (item is ImagePrim img)
-            {
-                if (layer is ImageLayer il && _images.Get(il) is { } image)
-                {
-                    dc.DrawImage(image.FrameAt(nowMs), new Rect(img.X, img.Y, Math.Max(0, img.W), Math.Max(0, img.H)));
-                    animated |= image.IsAnimated;
-                }
-            }
-            else DrawFill(dc, item);
+            bool aliased = sharpLayer && p is RectPrim or PolygonPrim;
+            if (dc is not null && runAliased == aliased) return dc;
+            dc?.Close();
+            DrawingVisual dv;
+            if (runs < layerVisual.Children.Count) dv = (DrawingVisual)layerVisual.Children[runs];
+            else layerVisual.Children.Add(dv = new DrawingVisual());
+            runs++;
+            RenderOptions.SetEdgeMode(dv, aliased ? EdgeMode.Aliased : EdgeMode.Unspecified);
+            dc = dv.RenderOpen();
+            dc.PushTransform(transform);
+            runAliased = aliased;
+            return dc;
         }
+
+        bool animated = false;
+        try
+        {
+            foreach (var item in r.Items)
+                if (item.OutlineColor is not null && item.OutlineWidth > 0) DrawOutline(Ctx(item), item);
+            foreach (var item in r.Items)
+            {
+                if (item is ImagePrim img)
+                {
+                    if (layer is ImageLayer il && _images.Get(il) is { } image)
+                    {
+                        Ctx(item).DrawImage(image.FrameAt(nowMs), new Rect(img.X, img.Y, Math.Max(0, img.W), Math.Max(0, img.H)));
+                        animated |= image.IsAnimated;
+                    }
+                }
+                else DrawFill(Ctx(item), item);
+            }
+        }
+        finally
+        {
+            dc?.Close();
+        }
+        while (layerVisual.Children.Count > runs) layerVisual.Children.RemoveAt(layerVisual.Children.Count - 1);
         return animated;
     }
 
