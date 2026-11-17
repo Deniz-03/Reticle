@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Reticle.Core.Animations;
 using Reticle.Core.Hotkeys;
@@ -82,7 +81,10 @@ public sealed class AppState : ObservableObject, IDisposable
         Changed?.Invoke();
     }
 
-    /// <summary>Saves (insert or replace by id) and keeps the library ordered like <see cref="LibraryStore.LoadAll"/>.</summary>
+    /// <summary>
+    /// Saves (insert or replace by id) and keeps the library ordered like <see cref="LibraryStore.LoadAll"/>.
+    /// The saved doc becomes active when no doc is active.
+    /// </summary>
     public void SaveDoc(CrosshairDoc doc)
     {
         ArgumentNullException.ThrowIfNull(doc);
@@ -93,15 +95,25 @@ public sealed class AppState : ObservableObject, IDisposable
             .OrderBy(d => d.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(d => d.Id, StringComparer.Ordinal)
             .ToList();
+        if (Active is null)
+        {
+            Update(s => s with { ActiveCrosshairId = doc.Id });
+            OnPropertyChanged(nameof(Library));
+            return; // Update raised Changed
+        }
         RaiseLibraryChanged();
     }
 
-    /// <summary>Deletes the doc; if it was active, the first remaining doc becomes active.</summary>
+    /// <summary>
+    /// Deletes the doc on disk, then from the library; if it was active, the first remaining doc becomes active.
+    /// A failed disk delete throws and leaves the library unchanged.
+    /// </summary>
     public void DeleteDoc(string id)
     {
         ArgumentNullException.ThrowIfNull(id);
-        if (_library.RemoveAll(d => d.Id == id) == 0) return;
+        if (!_library.Any(d => d.Id == id)) return;
         _libraryStore.Delete(id);
+        _library.RemoveAll(d => d.Id == id);
         if (Active is null)
         {
             string? first = _library.Count > 0 ? _library[0].Id : null;
@@ -189,7 +201,7 @@ public sealed class AppState : ObservableObject, IDisposable
         {
             if (_pendingSave is null) return;
             try { _settingsStore.Save(_pendingSave); }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            catch (Exception ex) // runs on the threadpool via the timer: any escaping exception would kill the process
             {
                 Debug.WriteLine($"Saving settings failed: {ex.Message}");
                 return; // keep pending; the next change or Dispose retries

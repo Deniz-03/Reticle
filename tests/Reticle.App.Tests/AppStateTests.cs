@@ -178,4 +178,89 @@ public sealed class AppStateTests : IDisposable
         Assert.Equal("0", s.Library[0].Id);
         Assert.Equal(2, new LibraryStore(_root).LoadAll().Count);
     }
+    [Fact]
+    public void AppState_Apply_SetHidden_RaisesChanged()
+    {
+        SeedLibrary(Doc("a", "A"));
+        var s = Create();
+        int changed = 0;
+        s.Changed += () => changed++;
+
+        s.Apply(new SetHidden(true));
+        Assert.Equal(1, changed);
+        s.Apply(new SetHidden(true)); // no effective change
+        Assert.Equal(1, changed);
+        s.Apply(new SetHidden(false));
+        Assert.Equal(2, changed);
+    }
+
+    [Fact]
+    public void AppState_SettingsFlush_UnexpectedException_DoesNotThrow()
+    {
+        SeedLibrary(Doc("a", "A"));
+        // A NUL character makes the settings path invalid: saving throws ArgumentException (not an IO exception).
+        var s = new AppState(new LibraryStore(_root), new SettingsStore(_root + "\0bad"), () => _now);
+        s.Update(x => x with { GlobalScale = 2 });
+
+        Thread.Sleep(1000); // let the debounced flush run (and fail) on the threadpool; it must not crash the process
+        var ex = Record.Exception(s.Dispose);
+
+        Assert.Null(ex);
+    }
+
+    [Fact]
+    public void AppState_SettingsFlush_Failure_KeepsSavePending()
+    {
+        SeedLibrary(Doc("a", "A"));
+        var blocker = Path.Combine(_root, "settings.json");
+        Directory.CreateDirectory(blocker); // a directory where the file belongs makes the save fail
+        var s = Create();
+        s.Update(x => x with { GlobalScale = 2 });
+
+        Thread.Sleep(1000); // debounced flush fails
+        Directory.Delete(blocker);
+        s.Dispose(); // retries the pending save
+        _state = null;
+
+        Assert.Equal(2, new SettingsStore(_root).Load().GlobalScale, 9);
+    }
+
+    [Fact]
+    public void AppState_SaveDoc_WithoutActive_ActivatesSavedDoc()
+    {
+        SeedLibrary(Doc("a", "A"));
+        var s = Create();
+        s.DeleteDoc("a");
+        Assert.Null(s.Active);
+
+        s.SaveDoc(Doc("b", "B"));
+
+        Assert.Equal("b", s.Active!.Id);
+        Assert.Equal("b", s.Settings.ActiveCrosshairId);
+    }
+
+    [Fact]
+    public void AppState_SaveDoc_WithActive_KeepsActive()
+    {
+        SeedLibrary(Doc("b", "B"));
+        var s = Create();
+
+        s.SaveDoc(Doc("a", "A"));
+
+        Assert.Equal("b", s.Active!.Id);
+    }
+
+    [Fact]
+    public void AppState_DeleteDoc_DiskFailure_KeepsDocInMemory()
+    {
+        SeedLibrary(Doc("a", "A"), Doc("b", "B"));
+        var s = Create();
+        var file = Path.Combine(_root, "crosshairs", "a.json");
+
+        using (new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.None))
+            Assert.ThrowsAny<IOException>(() => s.DeleteDoc("a"));
+
+        Assert.Contains(s.Library, d => d.Id == "a");
+        Assert.Equal("a", s.Active!.Id);
+    }
 }
