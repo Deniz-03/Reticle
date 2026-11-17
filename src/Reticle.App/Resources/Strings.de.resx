@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppTitle" xml:space="preserve"><value>Reticle</value></data>
+  <data name="NavigationName" xml:space="preserve"><value>Navigation</value></data>
+  <data name="NavLibrary" xml:space="preserve"><value>Bibliothek</value></data>
+  <data name="NavDesigner" xml:space="preserve"><value>Designer</value></data>
+  <data name="NavPosition" xml:space="preserve"><value>Position &amp; Monitor</value></data>
+  <data name="NavHotkeys" xml:space="preserve"><value>Hotkeys</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="PageComingSoon" xml:space="preserve"><value>Diese Seite ist noch nicht verfügbar.</value></data>
+  <data name="LibraryHint" xml:space="preserve"><value>Doppelklick zeigt ein Fadenkreuz im Overlay an. Rechtsklick für weitere Aktionen.</value></data>
+  <data name="ActiveBadge" xml:space="preserve"><value>Aktiv</value></data>
+  <data name="Activate" xml:space="preserve"><value>Aktivieren</value></data>
+  <data name="Edit" xml:space="preserve"><value>Bearbeiten</value></data>
+  <data name="Duplicate" xml:space="preserve"><value>Duplizieren</value></data>
+  <data name="Rename" xml:space="preserve"><value>Umbenennen</value></data>
+  <data name="Delete" xml:space="preserve"><value>Löschen</value></data>
+  <data name="New" xml:space="preserve"><value>Neu</value></data>
+  <data name="ImportCode" xml:space="preserve"><value>Importieren…</value></data>
+  <data name="ImportFile" xml:space="preserve"><value>Datei importieren…</value></data>
+  <data name="CopyCode" xml:space="preserve"><value>Code kopieren</value></data>
+  <data name="ExportFile" xml:space="preserve"><value>Als Datei exportieren…</value></data>
+  <data name="ExportPng" xml:space="preserve"><value>Als PNG exportieren…</value></data>
+  <data name="ConfirmDelete" xml:space="preserve"><value>„{0}“ löschen? Das kann nicht rückgängig gemacht werden.</value></data>
+  <data name="RenameCrosshairTitle" xml:space="preserve"><value>Fadenkreuz umbenennen</value></data>
+  <data name="RenameLayerTitle" xml:space="preserve"><value>Ebene umbenennen</value></data>
+  <data name="NameLabel" xml:space="preserve"><value>Name</value></data>
+  <data name="CopyNameFormat" xml:space="preserve"><value>{0} (Kopie)</value></data>
+  <data name="NewCrosshairName" xml:space="preserve"><value>Neues Fadenkreuz</value></data>
+  <data name="StatusCodeCopied" xml:space="preserve"><value>Share-Code von „{0}“ kopiert.</value></data>
+  <data name="StatusExported" xml:space="preserve"><value>{0} gespeichert.</value></data>
+  <data name="FileFilterCrosshair" xml:space="preserve"><value>Reticle-Fadenkreuz</value></data>
+  <data name="FileFilterImages" xml:space="preserve"><value>Bilder</value></data>
+  <data name="ImportTitle" xml:space="preserve"><value>Fadenkreuz importieren</value></data>
+  <data name="ImportHint" xml:space="preserve"><value>Füge einen Reticle-Share-Code (RTCL1.…) oder einen Valorant-Fadenkreuz-Code (0;…) ein.</value></data>
+  <data name="FormatShareCode" xml:space="preserve"><value>Erkannt: Reticle-Share-Code</value></data>
+  <data name="FormatValorant" xml:space="preserve"><value>Erkannt: Valorant-Fadenkreuz-Code</value></data>
+  <data name="Import" xml:space="preserve"><value>Importieren</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="ErrorUnknownCodeFormat" xml:space="preserve"><value>Unbekanntes Format. Erwartet wird ein Reticle-Share-Code (RTCL1.…) oder ein Valorant-Code (0;…).</value></data>
+  <data name="ErrorFileTooLarge" xml:space="preserve"><value>Die Datei ist zu groß.</value></data>
+  <data name="ErrorFileRead" xml:space="preserve"><value>Die Datei konnte nicht gelesen werden: {0}</value></data>
+  <data name="ErrorFileWrite" xml:space="preserve"><value>Die Datei konnte nicht geschrieben werden: {0}</value></data>
+  <data name="ErrorFileInvalid" xml:space="preserve"><value>Die Datei ist kein gültiges Reticle-Fadenkreuz.</value></data>
+  <data name="ErrorFileVersion" xml:space="preserve"><value>Die Datei stammt von einer neueren Reticle-Version.</value></data>
+  <data name="ErrorImageFormat" xml:space="preserve"><value>Nicht unterstütztes Bildformat. Bitte PNG, JPG, WebP oder GIF verwenden.</value></data>
+  <data name="ErrorImageTooLarge" xml:space="preserve"><value>Das Bild ist größer als 2 MB.</value></data>
+  <data name="ErrorImageRead" xml:space="preserve"><value>Das Bild konnte nicht gelesen werden.</value></data>
+  <data name="ErrorSave" xml:space="preserve"><value>Das Fadenkreuz konnte nicht gespeichert werden: {0}</value></data>
+  <data name="ErrorDelete" xml:space="preserve"><value>Das Fadenkreuz konnte nicht gelöscht werden: {0}</value></data>
+  <data name="DesignerEmpty" xml:space="preserve"><value>Die Bibliothek ist leer. Lege zuerst in der Bibliothek ein Fadenkreuz an.</value></data>
+  <data name="CrosshairName" xml:space="preserve"><value>Name des Fadenkreuzes</value></data>
+  <data name="ScaleWithResolution" xml:space="preserve"><value>Mit Auflösung skalieren</value></data>
+  <data name="ScaleWithResolutionTip" xml:space="preserve"><value>Größen beziehen sich auf 1080 px Bildhöhe und skalieren mit der Monitorhöhe.</value></data>
+  <data name="ShownOnOverlay" xml:space="preserve"><value>Im Overlay aktiv</value></data>
+  <data name="UndoTip" xml:space="preserve"><value>Rückgängig (Strg+Z)</value></data>
+  <data name="RedoTip" xml:space="preserve"><value>Wiederholen (Strg+Y)</value></data>
+  <data name="Layers" xml:space="preserve"><value>Ebenen</value></data>
+  <data name="AddClassic" xml:space="preserve"><value>Klassisches Kreuz hinzufügen</value></data>
+  <data name="AddRadial" xml:space="preserve"><value>Radiale Arme hinzufügen</value></data>
+  <data name="AddShape" xml:space="preserve"><value>Form hinzufügen</value></data>
+  <data name="AddImage" xml:space="preserve"><value>Bild hinzufügen…</value></data>
+  <data name="MoveUp" xml:space="preserve"><value>Nach oben</value></data>
+  <data name="MoveDown" xml:space="preserve"><value>Nach unten</value></data>
+  <data name="ToggleVisible" xml:space="preserve"><value>Ein-/ausblenden</value></data>
+  <data name="NoLayerSelected" xml:space="preserve"><value>Wähle eine Ebene, um ihre Eigenschaften zu bearbeiten.</value></data>
+  <data name="ZoomIn" xml:space="preserve"><value>Vergrößern</value></data>
+  <data name="ZoomOut" xml:space="preserve"><value>Verkleinern</value></data>
+  <data name="Background" xml:space="preserve"><value>Hintergrund</value></data>
+  <data name="BackgroundSample" xml:space="preserve"><value>Szene</value></data>
+  <data name="BackgroundDark" xml:space="preserve"><value>Dunkel</value></data>
+  <data name="BackgroundLight" xml:space="preserve"><value>Hell</value></data>
+  <data name="BackgroundChecker" xml:space="preserve"><value>Karo</value></data>
+  <data name="LayerTypeClassic" xml:space="preserve"><value>Klassisch</value></data>
+  <data name="LayerTypeRadial" xml:space="preserve"><value>Radial</value></data>
+  <data name="LayerTypeShape" xml:space="preserve"><value>Form</value></data>
+  <data name="LayerTypeImage" xml:space="preserve"><value>Bild</value></data>
+  <data name="ShapeCircle" xml:space="preserve"><value>Kreis</value></data>
+  <data name="ShapeRing" xml:space="preserve"><value>Ring</value></data>
+  <data name="ShapeRectangle" xml:space="preserve"><value>Rechteck</value></data>
+  <data name="ShapeTriangle" xml:space="preserve"><value>Dreieck</value></data>
+  <data name="ShapeChevron" xml:space="preserve"><value>Chevron</value></data>
+  <data name="ShapeArc" xml:space="preserve"><value>Bogen</value></data>
+  <data name="ShapeLine" xml:space="preserve"><value>Linie</value></data>
+  <data name="SectionLines" xml:space="preserve"><value>Linien</value></data>
+  <data name="SectionDot" xml:space="preserve"><value>Mittelpunkt</value></data>
+  <data name="SectionArms" xml:space="preserve"><value>Arme</value></data>
+  <data name="SectionShape" xml:space="preserve"><value>Form</value></data>
+  <data name="SectionImage" xml:space="preserve"><value>Bild</value></data>
+  <data name="SectionLayer" xml:space="preserve"><value>Ebene</value></data>
+  <data name="SectionOutline" xml:space="preserve"><value>Outline</value></data>
+  <data name="SectionAnimation" xml:space="preserve"><value>Animation</value></data>
+  <data name="Length" xml:space="preserve"><value>Länge</value></data>
+  <data name="Thickness" xml:space="preserve"><value>Dicke</value></data>
+  <data name="Gap" xml:space="preserve"><value>Abstand</value></data>
+  <data name="LineTop" xml:space="preserve"><value>Oben</value></data>
+  <data name="LineBottom" xml:space="preserve"><value>Unten</value></data>
+  <data name="LineLeft" xml:space="preserve"><value>Links</value></data>
+  <data name="LineRight" xml:space="preserve"><value>Rechts</value></data>
+  <data name="DotEnabled" xml:space="preserve"><value>Mittelpunkt anzeigen</value></data>
+  <data name="DotRound" xml:space="preserve"><value>Rund</value></data>
+  <data name="Size" xml:space="preserve"><value>Größe</value></data>
+  <data name="Arms" xml:space="preserve"><value>Arme</value></data>
+  <data name="StartAngle" xml:space="preserve"><value>Startwinkel</value></data>
+  <data name="ShapeKind" xml:space="preserve"><value>Typ</value></data>
+  <data name="Width" xml:space="preserve"><value>Breite</value></data>
+  <data name="Height" xml:space="preserve"><value>Höhe</value></data>
+  <data name="StrokeWidth" xml:space="preserve"><value>Strichstärke</value></data>
+  <data name="ArcStart" xml:space="preserve"><value>Startwinkel</value></data>
+  <data name="ArcSweep" xml:space="preserve"><value>Bogenlänge</value></data>
+  <data name="ReplaceImage" xml:space="preserve"><value>Ersetzen…</value></data>
+  <data name="Color" xml:space="preserve"><value>Farbe</value></data>
+  <data name="PickColor" xml:space="preserve"><value>Farbe wählen</value></data>
+  <data name="Opacity" xml:space="preserve"><value>Deckkraft</value></data>
+  <data name="Rotation" xml:space="preserve"><value>Rotation</value></data>
+  <data name="Scale" xml:space="preserve"><value>Skalierung</value></data>
+  <data name="OffsetX" xml:space="preserve"><value>Versatz X</value></data>
+  <data name="OffsetY" xml:space="preserve"><value>Versatz Y</value></data>
+  <data name="Blur" xml:space="preserve"><value>Weichzeichnen</value></data>
+  <data name="OutlineEnabled" xml:space="preserve"><value>Outline anzeigen</value></data>
+  <data name="AnimationEnabled" xml:space="preserve"><value>Bei Eingabe animieren</value></data>
+  <data name="Trigger" xml:space="preserve"><value>Auslöser</value></data>
+  <data name="TriggerTip" xml:space="preserve"><value>Klicken, dann Taste oder Maustaste drücken. Esc bricht ab.</value></data>
+  <data name="TriggerNone" xml:space="preserve"><value>Keiner</value></data>
+  <data name="PressKeyOrButton" xml:space="preserve"><value>Taste oder Maustaste drücken…</value></data>
+  <data name="Mode" xml:space="preserve"><value>Modus</value></data>
+  <data name="ModeOnce" xml:space="preserve"><value>Einmal</value></data>
+  <data name="ModeWhileHeld" xml:space="preserve"><value>Solange gehalten</value></data>
+  <data name="KeyframeTitle" xml:space="preserve"><value>Stufe {0}</value></data>
+  <data name="DurationMs" xml:space="preserve"><value>Dauer (ms)</value></data>
+  <data name="Easing" xml:space="preserve"><value>Verlauf</value></data>
+  <data name="EasingLinear" xml:space="preserve"><value>Linear</value></data>
+  <data name="EasingIn" xml:space="preserve"><value>Langsam beginnen</value></data>
+  <data name="EasingOut" xml:space="preserve"><value>Langsam enden</value></data>
+  <data name="EasingInOut" xml:space="preserve"><value>Langsam beginnen und enden</value></data>
+  <data name="GapAdd" xml:space="preserve"><value>Abstand +</value></data>
+  <data name="ScaleMul" xml:space="preserve"><value>Skalierung ×</value></data>
+  <data name="RotationAdd" xml:space="preserve"><value>Rotation +</value></data>
+  <data name="OpacityMul" xml:space="preserve"><value>Deckkraft ×</value></data>
+  <data name="AnimateColor" xml:space="preserve"><value>Farbe ändern</value></data>
+  <data name="AddKeyframe" xml:space="preserve"><value>Stufe hinzufügen</value></data>
+  <data name="RemoveKeyframe" xml:space="preserve"><value>Stufe entfernen</value></data>
+  <data name="MouseButton" xml:space="preserve"><value>Maustaste</value></data>
+  <data name="MouseLeft" xml:space="preserve"><value>Linke Maustaste</value></data>
+  <data name="MouseRight" xml:space="preserve"><value>Rechte Maustaste</value></data>
+  <data name="MouseMiddle" xml:space="preserve"><value>Mittlere Maustaste</value></data>
+  <data name="MouseX1" xml:space="preserve"><value>Maustaste 4</value></data>
+  <data name="MouseX2" xml:space="preserve"><value>Maustaste 5</value></data>
+  <data name="Properties" xml:space="preserve"><value>Eigenschaften</value></data>
+</root>

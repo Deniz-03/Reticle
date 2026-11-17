@@ -1,0 +1,14 @@
+<Window x:Class="Reticle.App.Views.TextPromptDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:Reticle.App.Resources"
+        Style="{StaticResource DialogWindow}" WindowStartupLocation="CenterOwner">
+    <StackPanel Margin="20" Width="340">
+        <TextBlock x:Name="LabelText" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6"/>
+        <TextBox x:Name="InputBox"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
+            <Button Content="{x:Static res:Strings.Cancel}" IsCancel="True"/>
+            <Button Content="{x:Static res:Strings.Ok}" IsDefault="True" Style="{StaticResource AccentButton}" Margin="0" Click="OnOk"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

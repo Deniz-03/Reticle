@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="AppTitle" xml:space="preserve"><value>Reticle</value></data>
+  <data name="NavigationName" xml:space="preserve"><value>Navigation</value></data>
+  <data name="NavLibrary" xml:space="preserve"><value>Library</value></data>
+  <data name="NavDesigner" xml:space="preserve"><value>Designer</value></data>
+  <data name="NavPosition" xml:space="preserve"><value>Position &amp; Monitor</value></data>
+  <data name="NavHotkeys" xml:space="preserve"><value>Hotkeys</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Settings</value></data>
+  <data name="PageComingSoon" xml:space="preserve"><value>This page is not available yet.</value></data>
+  <data name="LibraryHint" xml:space="preserve"><value>Double-click a crosshair to show it on the overlay. Right-click for more actions.</value></data>
+  <data name="ActiveBadge" xml:space="preserve"><value>Active</value></data>
+  <data name="Activate" xml:space="preserve"><value>Activate</value></data>
+  <data name="Edit" xml:space="preserve"><value>Edit</value></data>
+  <data name="Duplicate" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="Rename" xml:space="preserve"><value>Rename</value></data>
+  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="New" xml:space="preserve"><value>New</value></data>
+  <data name="ImportCode" xml:space="preserve"><value>Import code…</value></data>
+  <data name="ImportFile" xml:space="preserve"><value>Import file…</value></data>
+  <data name="CopyCode" xml:space="preserve"><value>Copy code</value></data>
+  <data name="ExportFile" xml:space="preserve"><value>Export as file…</value></data>
+  <data name="ExportPng" xml:space="preserve"><value>Export as PNG…</value></data>
+  <data name="ConfirmDelete" xml:space="preserve"><value>Delete "{0}"? This cannot be undone.</value></data>
+  <data name="RenameCrosshairTitle" xml:space="preserve"><value>Rename crosshair</value></data>
+  <data name="RenameLayerTitle" xml:space="preserve"><value>Rename layer</value></data>
+  <data name="NameLabel" xml:space="preserve"><value>Name</value></data>
+  <data name="CopyNameFormat" xml:space="preserve"><value>{0} (copy)</value></data>
+  <data name="NewCrosshairName" xml:space="preserve"><value>New crosshair</value></data>
+  <data name="StatusCodeCopied" xml:space="preserve"><value>Share code of "{0}" copied.</value></data>
+  <data name="StatusExported" xml:space="preserve"><value>Saved {0}.</value></data>
+  <data name="FileFilterCrosshair" xml:space="preserve"><value>Reticle crosshair</value></data>
+  <data name="FileFilterImages" xml:space="preserve"><value>Images</value></data>
+  <data name="ImportTitle" xml:space="preserve"><value>Import crosshair</value></data>
+  <data name="ImportHint" xml:space="preserve"><value>Paste a Reticle share code (RTCL1.…) or a Valorant crosshair code (0;…).</value></data>
+  <data name="FormatShareCode" xml:space="preserve"><value>Detected: Reticle share code</value></data>
+  <data name="FormatValorant" xml:space="preserve"><value>Detected: Valorant crosshair code</value></data>
+  <data name="Import" xml:space="preserve"><value>Import</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="ErrorUnknownCodeFormat" xml:space="preserve"><value>Unknown format. Expected a Reticle share code (RTCL1.…) or a Valorant code (0;…).</value></data>
+  <data name="ErrorFileTooLarge" xml:space="preserve"><value>The file is too large.</value></data>
+  <data name="ErrorFileRead" xml:space="preserve"><value>The file could not be read: {0}</value></data>
+  <data name="ErrorFileWrite" xml:space="preserve"><value>The file could not be written: {0}</value></data>
+  <data name="ErrorFileInvalid" xml:space="preserve"><value>The file is not a valid Reticle crosshair.</value></data>
+  <data name="ErrorFileVersion" xml:space="preserve"><value>The file was made by a newer version of Reticle.</value></data>
+  <data name="ErrorImageFormat" xml:space="preserve"><value>Unsupported image type. Use PNG, JPG, WebP or GIF.</value></data>
+  <data name="ErrorImageTooLarge" xml:space="preserve"><value>The image is larger than 2 MB.</value></data>
+  <data name="ErrorImageRead" xml:space="preserve"><value>The image could not be read.</value></data>
+  <data name="ErrorSave" xml:space="preserve"><value>The crosshair could not be saved: {0}</value></data>
+  <data name="ErrorDelete" xml:space="preserve"><value>The crosshair could not be deleted: {0}</value></data>
+  <data name="DesignerEmpty" xml:space="preserve"><value>The library is empty. Create a crosshair in the library first.</value></data>
+  <data name="CrosshairName" xml:space="preserve"><value>Crosshair name</value></data>
+  <data name="ScaleWithResolution" xml:space="preserve"><value>Scale with resolution</value></data>
+  <data name="ScaleWithResolutionTip" xml:space="preserve"><value>Sizes refer to a 1080 px tall screen and scale with the monitor height.</value></data>
+  <data name="ShownOnOverlay" xml:space="preserve"><value>Shown on overlay</value></data>
+  <data name="UndoTip" xml:space="preserve"><value>Undo (Ctrl+Z)</value></data>
+  <data name="RedoTip" xml:space="preserve"><value>Redo (Ctrl+Y)</value></data>
+  <data name="Layers" xml:space="preserve"><value>Layers</value></data>
+  <data name="AddClassic" xml:space="preserve"><value>Add classic cross</value></data>
+  <data name="AddRadial" xml:space="preserve"><value>Add radial arms</value></data>
+  <data name="AddShape" xml:space="preserve"><value>Add shape</value></data>
+  <data name="AddImage" xml:space="preserve"><value>Add image…</value></data>
+  <data name="MoveUp" xml:space="preserve"><value>Move up</value></data>
+  <data name="MoveDown" xml:space="preserve"><value>Move down</value></data>
+  <data name="ToggleVisible" xml:space="preserve"><value>Show or hide</value></data>
+  <data name="NoLayerSelected" xml:space="preserve"><value>Select a layer to edit its properties.</value></data>
+  <data name="ZoomIn" xml:space="preserve"><value>Zoom in</value></data>
+  <data name="ZoomOut" xml:space="preserve"><value>Zoom out</value></data>
+  <data name="Background" xml:space="preserve"><value>Background</value></data>
+  <data name="BackgroundSample" xml:space="preserve"><value>Scene</value></data>
+  <data name="BackgroundDark" xml:space="preserve"><value>Dark</value></data>
+  <data name="BackgroundLight" xml:space="preserve"><value>Light</value></data>
+  <data name="BackgroundChecker" xml:space="preserve"><value>Checker</value></data>
+  <data name="LayerTypeClassic" xml:space="preserve"><value>Classic</value></data>
+  <data name="LayerTypeRadial" xml:space="preserve"><value>Radial</value></data>
+  <data name="LayerTypeShape" xml:space="preserve"><value>Shape</value></data>
+  <data name="LayerTypeImage" xml:space="preserve"><value>Image</value></data>
+  <data name="ShapeCircle" xml:space="preserve"><value>Circle</value></data>
+  <data name="ShapeRing" xml:space="preserve"><value>Ring</value></data>
+  <data name="ShapeRectangle" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="ShapeTriangle" xml:space="preserve"><value>Triangle</value></data>
+  <data name="ShapeChevron" xml:space="preserve"><value>Chevron</value></data>
+  <data name="ShapeArc" xml:space="preserve"><value>Arc</value></data>
+  <data name="ShapeLine" xml:space="preserve"><value>Line</value></data>
+  <data name="SectionLines" xml:space="preserve"><value>Lines</value></data>
+  <data name="SectionDot" xml:space="preserve"><value>Center dot</value></data>
+  <data name="SectionArms" xml:space="preserve"><value>Arms</value></data>
+  <data name="SectionShape" xml:space="preserve"><value>Shape</value></data>
+  <data name="SectionImage" xml:space="preserve"><value>Image</value></data>
+  <data name="SectionLayer" xml:space="preserve"><value>Layer</value></data>
+  <data name="SectionOutline" xml:space="preserve"><value>Outline</value></data>
+  <data name="SectionAnimation" xml:space="preserve"><value>Animation</value></data>
+  <data name="Length" xml:space="preserve"><value>Length</value></data>
+  <data name="Thickness" xml:space="preserve"><value>Thickness</value></data>
+  <data name="Gap" xml:space="preserve"><value>Gap</value></data>
+  <data name="LineTop" xml:space="preserve"><value>Top</value></data>
+  <data name="LineBottom" xml:space="preserve"><value>Bottom</value></data>
+  <data name="LineLeft" xml:space="preserve"><value>Left</value></data>
+  <data name="LineRight" xml:space="preserve"><value>Right</value></data>
+  <data name="DotEnabled" xml:space="preserve"><value>Show center dot</value></data>
+  <data name="DotRound" xml:space="preserve"><value>Round</value></data>
+  <data name="Size" xml:space="preserve"><value>Size</value></data>
+  <data name="Arms" xml:space="preserve"><value>Arms</value></data>
+  <data name="StartAngle" xml:space="preserve"><value>Start angle</value></data>
+  <data name="ShapeKind" xml:space="preserve"><value>Type</value></data>
+  <data name="Width" xml:space="preserve"><value>Width</value></data>
+  <data name="Height" xml:space="preserve"><value>Height</value></data>
+  <data name="StrokeWidth" xml:space="preserve"><value>Stroke</value></data>
+  <data name="ArcStart" xml:space="preserve"><value>Start angle</value></data>
+  <data name="ArcSweep" xml:space="preserve"><value>Sweep</value></data>
+  <data name="ReplaceImage" xml:space="preserve"><value>Replace…</value></data>
+  <data name="Color" xml:space="preserve"><value>Color</value></data>
+  <data name="PickColor" xml:space="preserve"><value>Pick color</value></data>
+  <data name="Opacity" xml:space="preserve"><value>Opacity</value></data>
+  <data name="Rotation" xml:space="preserve"><value>Rotation</value></data>
+  <data name="Scale" xml:space="preserve"><value>Scale</value></data>
+  <data name="OffsetX" xml:space="preserve"><value>Offset X</value></data>
+  <data name="OffsetY" xml:space="preserve"><value>Offset Y</value></data>
+  <data name="Blur" xml:space="preserve"><value>Blur</value></data>
+  <data name="OutlineEnabled" xml:space="preserve"><value>Show outline</value></data>
+  <data name="AnimationEnabled" xml:space="preserve"><value>Animate on input</value></data>
+  <data name="Trigger" xml:space="preserve"><value>Trigger</value></data>
+  <data name="TriggerTip" xml:space="preserve"><value>Click, then press a key or mouse button. Esc cancels.</value></data>
+  <data name="TriggerNone" xml:space="preserve"><value>None</value></data>
+  <data name="PressKeyOrButton" xml:space="preserve"><value>Press a key or mouse button…</value></data>
+  <data name="Mode" xml:space="preserve"><value>Mode</value></data>
+  <data name="ModeOnce" xml:space="preserve"><value>Once</value></data>
+  <data name="ModeWhileHeld" xml:space="preserve"><value>While held</value></data>
+  <data name="KeyframeTitle" xml:space="preserve"><value>Stage {0}</value></data>
+  <data name="DurationMs" xml:space="preserve"><value>Duration (ms)</value></data>
+  <data name="Easing" xml:space="preserve"><value>Easing</value></data>
+  <data name="EasingLinear" xml:space="preserve"><value>Linear</value></data>
+  <data name="EasingIn" xml:space="preserve"><value>Ease in</value></data>
+  <data name="EasingOut" xml:space="preserve"><value>Ease out</value></data>
+  <data name="EasingInOut" xml:space="preserve"><value>Ease in and out</value></data>
+  <data name="GapAdd" xml:space="preserve"><value>Gap +</value></data>
+  <data name="ScaleMul" xml:space="preserve"><value>Scale ×</value></data>
+  <data name="RotationAdd" xml:space="preserve"><value>Rotation +</value></data>
+  <data name="OpacityMul" xml:space="preserve"><value>Opacity ×</value></data>
+  <data name="AnimateColor" xml:space="preserve"><value>Change color</value></data>
+  <data name="AddKeyframe" xml:space="preserve"><value>Add stage</value></data>
+  <data name="RemoveKeyframe" xml:space="preserve"><value>Remove stage</value></data>
+  <data name="MouseButton" xml:space="preserve"><value>Mouse button</value></data>
+  <data name="MouseLeft" xml:space="preserve"><value>Left mouse button</value></data>
+  <data name="MouseRight" xml:space="preserve"><value>Right mouse button</value></data>
+  <data name="MouseMiddle" xml:space="preserve"><value>Middle mouse button</value></data>
+  <data name="MouseX1" xml:space="preserve"><value>Mouse button 4</value></data>
+  <data name="MouseX2" xml:space="preserve"><value>Mouse button 5</value></data>
+  <data name="Properties" xml:space="preserve"><value>Properties</value></data>
+</root>

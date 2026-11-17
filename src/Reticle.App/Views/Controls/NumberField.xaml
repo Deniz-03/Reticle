@@ -1,0 +1,21 @@
+<UserControl x:Class="Reticle.App.Views.Controls.NumberField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root" Margin="0,3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="104"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="62"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Label, ElementName=Root}" VerticalAlignment="Center" Foreground="{StaticResource TextDimBrush}"
+                   TextTrimming="CharacterEllipsis"/>
+        <Slider x:Name="PartSlider" Grid.Column="1" Margin="0,0,10,0" VerticalAlignment="Center"
+                Minimum="{Binding Minimum, ElementName=Root}" Maximum="{Binding Maximum, ElementName=Root}"
+                SmallChange="{Binding Step, ElementName=Root}" LargeChange="{Binding Step, ElementName=Root}"
+                TickFrequency="{Binding Step, ElementName=Root}" IsSnapToTickEnabled="True"
+                AutomationProperties.Name="{Binding Label, ElementName=Root}"/>
+        <TextBox x:Name="PartText" Grid.Column="2" HorizontalContentAlignment="Right"
+                 AutomationProperties.Name="{Binding Label, ElementName=Root}"/>
+    </Grid>
+</UserControl>

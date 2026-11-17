@@ -1,0 +1,9 @@
+<UserControl x:Class="Reticle.App.Views.HotkeysView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <StackPanel Margin="28,24"><TextBlock Text="Hotkeys" Style="{StaticResource PageTitle}"/>
+ <CheckBox Content="Bei Rechtsklick ausblenden" IsChecked="{Binding HideOnRightClick}" Margin="0,20,0,12"/>
+ <TextBlock Text="{Binding CaptureHint}" Style="{StaticResource DimText}"/>
+ <TextBlock Text="Doppelte Belegung erkannt" Foreground="{StaticResource DangerBrush}" Visibility="{Binding HasConflict, Converter={StaticResource BoolToVis}}" Margin="0,6"/>
+ <Button Content="Taste für aktives Crosshair hinzufügen" Command="{Binding AddCrosshairBindingCommand}" HorizontalAlignment="Left" Margin="0,8"/>
+ <ListBox ItemsSource="{Binding Bindings}" Margin="0,16,0,0"><ListBox.ItemTemplate><DataTemplate><DockPanel Margin="0,4"><Button DockPanel.Dock="Right" Content="Belegen" Command="{Binding DataContext.CaptureCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/><TextBlock Text="{Binding BindingText}" HorizontalAlignment="Right" Width="170" Margin="12,4"/><TextBlock Text="{Binding Label}" VerticalAlignment="Center"/></DockPanel></DataTemplate></ListBox.ItemTemplate></ListBox>
+ </StackPanel>
+</UserControl>

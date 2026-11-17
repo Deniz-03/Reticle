@@ -1,0 +1,19 @@
+<UserControl x:Class="Reticle.App.Views.Controls.ColorField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:res="clr-namespace:Reticle.App.Resources"
+             x:Name="Root" Margin="0,3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="104"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Label, ElementName=Root}" VerticalAlignment="Center" Foreground="{StaticResource TextDimBrush}"/>
+        <Button x:Name="PartSwatch" Grid.Column="1" Width="30" Height="28" Padding="0" Margin="0,0,8,0"
+                ToolTip="{x:Static res:Strings.PickColor}" AutomationProperties.Name="{x:Static res:Strings.PickColor}">
+            <Border x:Name="PartChip" Width="18" Height="18" CornerRadius="4" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"/>
+        </Button>
+        <TextBox x:Name="PartText" Grid.Column="2" FontFamily="Consolas" AutomationProperties.Name="{Binding Label, ElementName=Root}"/>
+    </Grid>
+</UserControl>
