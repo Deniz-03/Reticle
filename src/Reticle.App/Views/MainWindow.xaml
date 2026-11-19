@@ -79,6 +79,28 @@
                     <TextBlock Text="{x:Static res:Strings.AppTitle}" FontSize="18" FontWeight="SemiBold" Margin="10,0,0,0"
                                VerticalAlignment="Center"/>
                 </StackPanel>
+                <!-- Overlay on/off: always visible at the bottom of the rail. -->
+                <Border DockPanel.Dock="Bottom" Background="{StaticResource ControlBrush}" CornerRadius="{StaticResource Radius}" Padding="12,10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <Ellipse Width="8" Height="8" VerticalAlignment="Center">
+                                <Ellipse.Style>
+                                    <Style TargetType="Ellipse">
+                                        <Setter Property="Fill" Value="{StaticResource TextDimBrush}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OverlayEnabled}" Value="True">
+                                                <Setter Property="Fill" Value="{StaticResource AccentBrush}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Ellipse.Style>
+                            </Ellipse>
+                            <TextBlock Text="{Binding OverlayStatusText}" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Button Content="{Binding OverlayToggleText}" Command="{Binding ToggleOverlayEnabledCommand}"
+                                HorizontalAlignment="Stretch" Style="{StaticResource AccentButton}"/>
+                    </StackPanel>
+                </Border>
                 <ListBox ItemsSource="{Binding NavItems}" SelectedItem="{Binding SelectedNav}"
                          ItemContainerStyle="{StaticResource NavItem}"
                          AutomationProperties.Name="{x:Static res:Strings.NavigationName}">

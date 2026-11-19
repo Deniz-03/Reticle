@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Reticle.App.Resources;
+using Reticle.Core.Hotkeys;
 using Reticle.Core.Model;
 
 namespace Reticle.App.ViewModels;
@@ -17,9 +18,13 @@ public sealed record PlaceholderViewModel(string Title);
 public sealed partial class MainViewModel : ObservableObject, IDisposable
 {
     private readonly Dictionary<AppPage, object> _pages = new();
+    private readonly AppState _state;
 
-    public MainViewModel(LibraryViewModelFactory library, DesignerViewModel designer, PositionViewModel position, HotkeysViewModel hotkeys, SettingsViewModel settings)
+    public MainViewModel(AppState state, LibraryViewModelFactory library, DesignerViewModel designer, PositionViewModel position, HotkeysViewModel hotkeys, SettingsViewModel settings)
     {
+        ArgumentNullException.ThrowIfNull(state);
+        _state = state;
+        _state.Changed += OnStateChanged;
         ArgumentNullException.ThrowIfNull(library);
         ArgumentNullException.ThrowIfNull(designer);
         Designer = designer;
@@ -90,8 +95,26 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         if (SelectedNav.Page == AppPage.Designer && Designer.RedoCommand.CanExecute(null)) Designer.RedoCommand.Execute(null);
     }
 
+    /// <summary>Whether the crosshair overlay is shown (persisted setting, same as the toggle hotkey).</summary>
+    public bool OverlayEnabled => _state.Settings.OverlayEnabled;
+
+    public string OverlayStatusText => OverlayEnabled ? Strings.OverlayStatusOn : Strings.OverlayStatusOff;
+
+    public string OverlayToggleText => OverlayEnabled ? Strings.OverlayTurnOff : Strings.OverlayTurnOn;
+
+    [RelayCommand]
+    private void ToggleOverlayEnabled() => _state.Apply(new ToggleOverlay());
+
+    private void OnStateChanged()
+    {
+        OnPropertyChanged(nameof(OverlayEnabled));
+        OnPropertyChanged(nameof(OverlayStatusText));
+        OnPropertyChanged(nameof(OverlayToggleText));
+    }
+
     public void Dispose()
     {
+        _state.Changed -= OnStateChanged;
         Designer.Dispose();
         Library.Dispose();
         Hotkeys.Dispose();

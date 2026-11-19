@@ -482,6 +482,18 @@ namespace Reticle.App.Resources {
             }
         }
 
+        /// <summary>Looks up a localized string similar to Crosshair is on.</summary>
+        public static string OverlayStatusOn => ResourceManager.GetString("OverlayStatusOn", Culture)!;
+
+        /// <summary>Looks up a localized string similar to Crosshair is off.</summary>
+        public static string OverlayStatusOff => ResourceManager.GetString("OverlayStatusOff", Culture)!;
+
+        /// <summary>Looks up a localized string similar to Turn off.</summary>
+        public static string OverlayTurnOff => ResourceManager.GetString("OverlayTurnOff", Culture)!;
+
+        /// <summary>Looks up a localized string similar to Turn on.</summary>
+        public static string OverlayTurnOn => ResourceManager.GetString("OverlayTurnOn", Culture)!;
+
         /// <summary>Looks up a localized string similar to Select a layer to edit its properties..</summary>
         public static string NoLayerSelected {
             get {

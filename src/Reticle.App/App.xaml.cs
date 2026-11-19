@@ -49,7 +49,7 @@ public partial class App : Application
         var state = _state;
         var dialogs = new DialogService();
         var designer = new DesignerViewModel(state, dialogs, doc => PreviewSizeFactor(state, monitors, doc));
-        _main = new MainViewModel(edit => new LibraryViewModel(state, dialogs, edit), designer,
+        _main = new MainViewModel(state, edit => new LibraryViewModel(state, dialogs, edit), designer,
             new PositionViewModel(state, monitors), new HotkeysViewModel(state), new SettingsViewModel(state));
         var window = new MainWindow(_main);
         MainWindow = window; // closing it exits the app (ShutdownMode=OnMainWindowClose) until the tray arrives

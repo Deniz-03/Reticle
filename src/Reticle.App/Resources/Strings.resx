@@ -68,6 +68,10 @@
   <data name="MoveUp" xml:space="preserve"><value>Move up</value></data>
   <data name="MoveDown" xml:space="preserve"><value>Move down</value></data>
   <data name="ToggleVisible" xml:space="preserve"><value>Show or hide</value></data>
+  <data name="OverlayStatusOn" xml:space="preserve"><value>Crosshair is on</value></data>
+  <data name="OverlayStatusOff" xml:space="preserve"><value>Crosshair is off</value></data>
+  <data name="OverlayTurnOff" xml:space="preserve"><value>Turn off</value></data>
+  <data name="OverlayTurnOn" xml:space="preserve"><value>Turn on</value></data>
   <data name="NoLayerSelected" xml:space="preserve"><value>Select a layer to edit its properties.</value></data>
   <data name="ZoomIn" xml:space="preserve"><value>Zoom in</value></data>
   <data name="ZoomOut" xml:space="preserve"><value>Zoom out</value></data>

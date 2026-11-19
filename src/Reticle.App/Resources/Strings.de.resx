@@ -68,6 +68,10 @@
   <data name="MoveUp" xml:space="preserve"><value>Nach oben</value></data>
   <data name="MoveDown" xml:space="preserve"><value>Nach unten</value></data>
   <data name="ToggleVisible" xml:space="preserve"><value>Ein-/ausblenden</value></data>
+  <data name="OverlayStatusOn" xml:space="preserve"><value>Fadenkreuz ist an</value></data>
+  <data name="OverlayStatusOff" xml:space="preserve"><value>Fadenkreuz ist aus</value></data>
+  <data name="OverlayTurnOff" xml:space="preserve"><value>Ausschalten</value></data>
+  <data name="OverlayTurnOn" xml:space="preserve"><value>Einschalten</value></data>
   <data name="NoLayerSelected" xml:space="preserve"><value>Wähle eine Ebene, um ihre Eigenschaften zu bearbeiten.</value></data>
   <data name="ZoomIn" xml:space="preserve"><value>Vergrößern</value></data>
   <data name="ZoomOut" xml:space="preserve"><value>Verkleinern</value></data>
